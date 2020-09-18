@@ -4,10 +4,21 @@
     <p>You have clicked <button (click)="countClick()">this</button> {{ clickCounter }} times.</p>
 </div>
 
-<div class="play-constainer">
+<div class="play-container">
     <p>
         <input type="text" [(ngModel)]="name">
         <br>
         <strong>You said: </strong> {{ name }}
     </p>
+</div>
+
+<div class="play-container">
+    <ng-template [ngIf]="clickCounter > 5" [ngIfElse] = "thislogic">
+        <p>The click counter <strong>IS GREATER</strong> than 5.</p>
+        <button (click)="clickCounter=0">reset counter</button>
+    </ng-template>
+
+    <ng-template #thislogic>
+        <p>The click counter <strong>is NOT greater</strong> than 5.</p>
+    </ng-template>
 </div>
